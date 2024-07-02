@@ -1,0 +1,253 @@
+2024-07-02 16:48:39.789991 [info]: TEST BEGIN
+2024-07-02 16:48:39.790173 [info]: test_fiber begin
+2024-07-02 16:48:39.790259 [debug]: Fiber::Fiber main id = 0
+2024-07-02 16:48:39.790284 [debug]: Judge if it's main fiber : 1
+2024-07-02 16:48:39.790354 [info]: test_fiber begin
+2024-07-02 16:48:39.790356 [debug]: Fiber::Fiber main id = 1
+2024-07-02 16:48:39.790431 [debug]: Fiber::Fiber main id = 2
+2024-07-02 16:48:39.790436 [debug]: user count is: 1
+2024-07-02 16:48:39.790457 [debug]: Judge if it's main fiber : 1
+2024-07-02 16:48:39.790463 [debug]: Before test_fiber resume
+2024-07-02 16:48:39.790484 [debug]: Fiber::Fiber main id = 3
+2024-07-02 16:48:39.790489 [info]: Fiber 1 is now resume
+2024-07-02 16:48:39.790493 [debug]: user count is: 1
+2024-07-02 16:48:39.790512 [info]: run_in_fiber begin
+2024-07-02 16:48:39.790515 [debug]: Before test_fiber resume
+2024-07-02 16:48:39.790533 [info]: Fiber 3 is now resume
+2024-07-02 16:48:39.790553 [info]: run_in_fiber begin
+2024-07-02 16:48:39.790527 [debug]: before run_in_fiber yield
+2024-07-02 16:48:39.790570 [debug]: before run_in_fiber yield
+2024-07-02 16:48:39.790573 [info]: Fiber 1 is now yield
+2024-07-02 16:48:39.790585 [info]: Fiber 3 is now yield
+2024-07-02 16:48:39.790588 [debug]: After test fiber resume
+2024-07-02 16:48:39.790601 [debug]: After test fiber resume
+2024-07-02 16:48:39.790616 [debug]: user count is: 3
+2024-07-02 16:48:39.790602 [debug]: user count is: 3
+2024-07-02 16:48:39.790631 [debug]: fiber status: 0
+2024-07-02 16:48:39.790633 [debug]: fiber status: 0
+2024-07-02 16:48:39.790647 [debug]: before test_fiber resume again
+2024-07-02 16:48:39.790663 [debug]: before test_fiber resume again
+2024-07-02 16:48:39.790665 [info]: Fiber 3 is now resume
+2024-07-02 16:48:39.790678 [info]: Fiber 1 is now resume
+2024-07-02 16:48:39.790682 [debug]: after run_in_fiber yield
+2024-07-02 16:48:39.790695 [debug]: after run_in_fiber yield
+2024-07-02 16:48:39.790710 [info]: run_in_fiber end
+2024-07-02 16:48:39.790696 [info]: run_in_fiber end
+2024-07-02 16:48:39.790742 [info]: Fiber 3 is now yield
+2024-07-02 16:48:39.790725 [info]: Fiber 1 is now yield
+2024-07-02 16:48:39.790758 [debug]: after test_fiber resume again
+2024-07-02 16:48:39.790773 [debug]: after test_fiber resume again
+2024-07-02 16:48:39.790781 [debug]: user count is: 1
+2024-07-02 16:48:39.790785 [debug]: user count is: 1
+2024-07-02 16:48:39.790787 [debug]: fiber status: 2
+2024-07-02 16:48:39.790802 [debug]: fiber status: 2
+2024-07-02 16:48:39.790805 [debug]: Fiber::reset 1 is now reset
+2024-07-02 16:48:39.790819 [debug]: Fiber::reset 3 is now reset
+2024-07-02 16:48:39.790821 [info]: Fiber 1 is now resume
+2024-07-02 16:48:39.790835 [info]: Fiber 3 is now resume
+2024-07-02 16:48:39.790837 [debug]: run_in_fiber2 begin
+2024-07-02 16:48:39.790850 [debug]: run_in_fiber2 end
+2024-07-02 16:48:39.790867 [info]: Fiber 1 is now yield
+2024-07-02 16:48:39.790851 [debug]: run_in_fiber2 begin
+2024-07-02 16:48:39.790882 [debug]: user count is: 1
+2024-07-02 16:48:39.790884 [debug]: run_in_fiber2 end
+2024-07-02 16:48:39.790898 [info]: test_fiber end
+2024-07-02 16:48:39.790914 [info]: Fiber 3 is now yield
+2024-07-02 16:48:39.790915 [debug]: Fiber::~Fiber() id = 1
+2024-07-02 16:48:39.790930 [debug]: user count is: 1
+2024-07-02 16:48:39.790949 [info]: test_fiber end
+2024-07-02 16:48:39.790952 [debug]: Fiber::~Fiber deallocate stack id = 1
+2024-07-02 16:48:39.790964 [debug]: Fiber::~Fiber() id = 3
+2024-07-02 16:48:39.790971 [debug]: Fiber::~Fiber() id = 0
+2024-07-02 16:48:39.790998 [debug]: Fiber::~Fiber deallocate stack id = 3
+2024-07-02 16:48:39.791042 [debug]: Fiber::~Fiber() id = 2
+2024-07-02 16:52:18.104684 [info]: TEST BEGIN
+2024-07-02 16:52:18.104914 [info]: test_fiber begin
+2024-07-02 16:52:18.104965 [debug]: Fiber::Fiber main id = 0
+2024-07-02 16:52:18.104991 [debug]: Judge if it's main fiber : 1
+2024-07-02 16:52:18.105024 [debug]: Fiber::Fiber main id = 1
+2024-07-02 16:52:18.105040 [debug]: user count is: 1
+2024-07-02 16:52:18.105049 [debug]: Before test_fiber resume
+2024-07-02 16:52:18.105053 [info]: Fiber 1 is now resume
+2024-07-02 16:52:18.105062 [info]: run_in_fiber begin
+2024-07-02 16:52:18.105070 [debug]: before run_in_fiber yield
+2024-07-02 16:52:18.105094 [info]: Fiber 1 is now yield
+2024-07-02 16:52:18.105121 [debug]: After test fiber resume
+2024-07-02 16:52:18.105128 [debug]: user count is: 3
+2024-07-02 16:52:18.105132 [debug]: fiber status: 0
+2024-07-02 16:52:18.105137 [debug]: before test_fiber resume again
+2024-07-02 16:52:18.105141 [info]: Fiber 1 is now resume
+2024-07-02 16:52:18.105133 [info]: test_fiber begin
+2024-07-02 16:52:18.105166 [debug]: Fiber::Fiber main id = 2
+2024-07-02 16:52:18.105146 [debug]: after run_in_fiber yield
+2024-07-02 16:52:18.105197 [debug]: Judge if it's main fiber : 1
+2024-07-02 16:52:18.105208 [info]: run_in_fiber end
+2024-07-02 16:52:18.105213 [debug]: Fiber::Fiber main id = 3
+2024-07-02 16:52:18.105234 [info]: Fiber 1 is now yield
+2024-07-02 16:52:18.105241 [debug]: user count is: 1
+2024-07-02 16:52:18.105255 [debug]: Before test_fiber resume
+2024-07-02 16:52:18.105242 [debug]: after test_fiber resume again
+2024-07-02 16:52:18.105276 [debug]: user count is: 1
+2024-07-02 16:52:18.105264 [info]: Fiber 3 is now resume
+2024-07-02 16:52:18.105295 [info]: run_in_fiber begin
+2024-07-02 16:52:18.105285 [debug]: fiber status: 2
+2024-07-02 16:52:30.948688 [debug]: before run_in_fiber yield
+2024-07-02 16:52:30.948725 [debug]: Fiber::reset 1 is now reset
+2024-07-02 16:52:30.948770 [info]: Fiber 1 is now resume
+2024-07-02 16:52:30.948735 [info]: Fiber 3 is now yield
+2024-07-02 16:52:30.948780 [debug]: run_in_fiber2 begin
+2024-07-02 16:52:30.948787 [debug]: run_in_fiber2 end
+2024-07-02 16:52:30.948791 [debug]: After test fiber resume
+2024-07-02 16:52:30.948794 [info]: Fiber 1 is now yield
+2024-07-02 16:52:30.948817 [debug]: user count is: 3
+2024-07-02 16:52:30.948832 [debug]: fiber status: 0
+2024-07-02 16:52:30.948845 [debug]: before test_fiber resume again
+2024-07-02 16:52:30.948868 [debug]: user count is: 1
+2024-07-02 16:52:30.948876 [info]: test_fiber end
+2024-07-02 16:52:30.948857 [info]: Fiber 3 is now resume
+2024-07-02 16:52:30.948893 [debug]: after run_in_fiber yield
+2024-07-02 16:52:30.948896 [debug]: Fiber::~Fiber() id = 1
+2024-07-02 16:52:30.948905 [info]: run_in_fiber end
+2024-07-02 16:52:30.948917 [info]: Fiber 3 is now yield
+2024-07-02 16:52:30.948932 [debug]: after test_fiber resume again
+2024-07-02 16:52:30.948932 [debug]: Fiber::~Fiber deallocate stack id = 1
+2024-07-02 16:52:30.948961 [debug]: Fiber::~Fiber() id = 0
+2024-07-02 16:52:30.948942 [debug]: user count is: 1
+2024-07-02 16:52:30.948995 [debug]: fiber status: 2
+2024-07-02 16:52:30.949008 [debug]: Fiber::reset 3 is now reset
+2024-07-02 16:52:30.949017 [info]: Fiber 3 is now resume
+2024-07-02 16:52:30.949028 [debug]: run_in_fiber2 begin
+2024-07-02 16:52:30.949037 [debug]: run_in_fiber2 end
+2024-07-02 16:52:30.949047 [info]: Fiber 3 is now yield
+2024-07-02 16:52:30.949058 [debug]: user count is: 1
+2024-07-02 16:52:30.949067 [info]: test_fiber end
+2024-07-02 16:52:30.949076 [debug]: Fiber::~Fiber() id = 3
+2024-07-02 16:52:30.949104 [debug]: Fiber::~Fiber deallocate stack id = 3
+2024-07-02 16:55:34.995564 [info]: TEST BEGIN
+2024-07-02 16:55:34.995821 [info]: test_fiber begin
+2024-07-02 16:55:34.995869 [debug]: Fiber::Fiber main id = 0
+2024-07-02 16:55:34.995884 [debug]: Judge if it's main fiber : 1
+2024-07-02 16:55:34.995912 [debug]: Fiber::Fiber main id = 1
+2024-07-02 16:55:34.995924 [debug]: user count is: 1
+2024-07-02 16:55:34.995936 [debug]: Before test_fiber resume
+2024-07-02 16:55:34.995944 [info]: Fiber 1 is now resume
+2024-07-02 16:55:34.995953 [info]: run_in_fiber begin
+2024-07-02 16:55:34.995962 [debug]: before run_in_fiber yield
+2024-07-02 16:55:34.995971 [info]: Fiber 1 is now yield
+2024-07-02 16:55:34.995982 [debug]: After test fiber resume
+2024-07-02 16:55:34.995991 [debug]: user count is: 3
+2024-07-02 16:55:34.996000 [debug]: fiber status: 0
+2024-07-02 16:55:34.996008 [debug]: before test_fiber resume again
+2024-07-02 16:55:34.996017 [info]: Fiber 1 is now resume
+2024-07-02 16:55:34.996027 [debug]: after run_in_fiber yield
+2024-07-02 16:55:34.996036 [info]: run_in_fiber end
+2024-07-02 16:55:34.996045 [info]: Fiber 1 is now yield
+2024-07-02 16:55:34.996062 [debug]: after test_fiber resume again
+2024-07-02 16:55:34.996073 [debug]: user count is: 1
+2024-07-02 16:55:34.996078 [debug]: fiber status: 2
+2024-07-02 16:55:34.996083 [debug]: Fiber::reset 1 is now reset
+2024-07-02 16:55:34.996087 [info]: Fiber 1 is now resume
+2024-07-02 16:55:34.996097 [debug]: run_in_fiber2 begin
+2024-07-02 16:55:34.996107 [debug]: run_in_fiber2 end
+2024-07-02 16:55:34.996111 [info]: test_fiber begin
+2024-07-02 16:55:34.996156 [debug]: Fiber::Fiber main id = 2
+2024-07-02 16:55:34.996174 [debug]: Judge if it's main fiber : 1
+2024-07-02 16:55:34.996115 [info]: Fiber 1 is now yield
+2024-07-02 16:55:34.996186 [debug]: user count is: 1
+2024-07-02 16:55:34.996194 [info]: test_fiber end
+2024-07-02 16:55:34.996199 [debug]: Fiber::~Fiber() id = 1
+2024-07-02 16:55:34.996188 [debug]: Fiber::Fiber main id = 3
+2024-07-02 16:55:34.996213 [debug]: user count is: 1
+2024-07-02 16:55:34.996229 [debug]: Fiber::~Fiber deallocate stack id = 1
+2024-07-02 16:55:34.996231 [debug]: Before test_fiber resume
+2024-07-02 16:55:34.996242 [debug]: Fiber::~Fiber() id = 0
+2024-07-02 16:55:34.996242 [info]: Fiber 3 is now resume
+2024-07-02 16:55:34.996255 [info]: run_in_fiber begin
+2024-07-02 16:55:34.996265 [debug]: before run_in_fiber yield
+2024-07-02 16:55:34.996273 [info]: Fiber 3 is now yield
+2024-07-02 16:55:34.996282 [debug]: After test fiber resume
+2024-07-02 16:55:34.996291 [debug]: user count is: 3
+2024-07-02 16:55:34.996302 [debug]: fiber status: 0
+2024-07-02 16:55:34.996311 [debug]: before test_fiber resume again
+2024-07-02 16:55:34.996320 [info]: Fiber 3 is now resume
+2024-07-02 16:55:34.996329 [debug]: after run_in_fiber yield
+2024-07-02 16:55:34.996337 [info]: run_in_fiber end
+2024-07-02 16:55:34.996346 [info]: Fiber 3 is now yield
+2024-07-02 16:55:34.996355 [debug]: after test_fiber resume again
+2024-07-02 16:55:34.996363 [debug]: user count is: 1
+2024-07-02 16:55:34.996371 [debug]: fiber status: 2
+2024-07-02 16:55:37.455559 [debug]: Fiber::reset 3 is now reset
+2024-07-02 16:55:37.455602 [info]: Fiber 3 is now resume
+2024-07-02 16:55:37.455610 [debug]: run_in_fiber2 begin
+2024-07-02 16:55:37.455622 [debug]: run_in_fiber2 end
+2024-07-02 16:55:37.455632 [info]: Fiber 3 is now yield
+2024-07-02 16:55:37.455644 [debug]: user count is: 1
+2024-07-02 16:55:37.455655 [info]: test_fiber end
+2024-07-02 16:55:37.455687 [debug]: Fiber::~Fiber() id = 3
+2024-07-02 16:55:37.455731 [debug]: Fiber::~Fiber deallocate stack id = 3
+2024-07-02 16:55:37.455745 [debug]: Fiber::~Fiber() id = 2
+2024-07-02 16:55:45.079690 [info]: TEST END
+2024-07-02 16:57:13.250445 [info]: TEST BEGIN
+2024-07-02 16:57:13.250624 [info]: test_fiber begin
+2024-07-02 16:57:13.250703 [debug]: Fiber::Fiber main id = 0
+2024-07-02 16:57:13.250729 [debug]: Judge if it's main fiber : 1
+2024-07-02 16:57:13.250775 [debug]: Fiber::Fiber main id = 1
+2024-07-02 16:57:13.250795 [debug]: user count is: 1
+2024-07-02 16:57:13.250801 [debug]: Before test_fiber resume
+2024-07-02 16:57:13.250807 [info]: Fiber 1 is now resume
+2024-07-02 16:57:13.250813 [info]: test_fiber begin
+2024-07-02 16:57:13.250815 [info]: run_in_fiber begin
+2024-07-02 16:57:13.250868 [debug]: before run_in_fiber yield
+2024-07-02 16:57:13.250871 [debug]: Fiber::Fiber main id = 2
+2024-07-02 16:57:13.250897 [info]: Fiber 1 is now yield
+2024-07-02 16:57:13.250920 [debug]: Judge if it's main fiber : 1
+2024-07-02 16:57:13.250937 [debug]: After test fiber resume
+2024-07-02 16:57:13.250944 [debug]: user count is: 3
+2024-07-02 16:57:13.250957 [debug]: Fiber::Fiber main id = 3
+2024-07-02 16:57:13.250976 [debug]: user count is: 1
+2024-07-02 16:57:13.250958 [debug]: fiber status: 0
+2024-07-02 16:57:13.251007 [debug]: before test_fiber resume again
+2024-07-02 16:57:13.251022 [info]: Fiber 1 is now resume
+2024-07-02 16:57:13.251038 [debug]: after run_in_fiber yield
+2024-07-02 16:57:13.251045 [info]: run_in_fiber end
+2024-07-02 16:57:13.251059 [info]: Fiber 1 is now yield
+2024-07-02 16:57:13.251074 [debug]: after test_fiber resume again
+2024-07-02 16:57:13.250992 [debug]: Before test_fiber resume
+2024-07-02 16:57:13.251086 [info]: Fiber 3 is now resume
+2024-07-02 16:57:13.251117 [info]: run_in_fiber begin
+2024-07-02 16:57:13.251128 [debug]: before run_in_fiber yield
+2024-07-02 16:57:13.251122 [debug]: user count is: 1
+2024-07-02 16:57:13.251143 [info]: Fiber 3 is now yield
+2024-07-02 16:57:13.251145 [debug]: fiber status: 2
+2024-07-02 16:57:13.251159 [debug]: After test fiber resume
+2024-07-02 16:57:13.251161 [debug]: Fiber::reset 1 is now reset
+2024-07-02 16:57:13.251173 [debug]: user count is: 3
+2024-07-02 16:57:13.251175 [info]: Fiber 1 is now resume
+2024-07-02 16:57:13.251188 [debug]: fiber status: 0
+2024-07-02 16:57:13.251191 [debug]: run_in_fiber2 begin
+2024-07-02 16:57:13.251203 [debug]: before test_fiber resume again
+2024-07-02 16:57:13.251204 [debug]: run_in_fiber2 end
+2024-07-02 16:57:13.251218 [info]: Fiber 3 is now resume
+2024-07-02 16:57:13.251219 [info]: Fiber 1 is now yield
+2024-07-02 16:57:13.251234 [debug]: after run_in_fiber yield
+2024-07-02 16:57:13.251236 [debug]: user count is: 1
+2024-07-02 16:57:13.251249 [info]: run_in_fiber end
+2024-07-02 16:57:13.251251 [info]: test_fiber end
+2024-07-02 16:57:13.251264 [info]: Fiber 3 is now yield
+2024-07-02 16:57:13.251265 [debug]: Fiber::~Fiber() id = 1
+2024-07-02 16:57:13.251280 [debug]: after test_fiber resume again
+2024-07-02 16:57:13.251299 [debug]: user count is: 1
+2024-07-02 16:57:13.251300 [debug]: Fiber::~Fiber deallocate stack id = 1
+2024-07-02 16:57:13.251314 [debug]: fiber status: 2
+2024-07-02 16:57:13.251320 [debug]: Fiber::~Fiber() id = 0
+2024-07-02 16:57:13.251330 [debug]: Fiber::reset 3 is now reset
+2024-07-02 16:57:13.251344 [info]: Fiber 3 is now resume
+2024-07-02 16:57:13.251358 [debug]: run_in_fiber2 begin
+2024-07-02 16:57:13.251372 [debug]: run_in_fiber2 end
+2024-07-02 16:57:13.251385 [info]: Fiber 3 is now yield
+2024-07-02 16:57:13.251399 [debug]: user count is: 1
+2024-07-02 16:57:13.251412 [info]: test_fiber end
+2024-07-02 16:57:13.251426 [debug]: Fiber::~Fiber() id = 3
+2024-07-02 16:57:13.251466 [debug]: Fiber::~Fiber deallocate stack id = 3
+2024-07-02 16:57:13.251483 [debug]: Fiber::~Fiber() id = 2
+2024-07-02 16:57:13.251548 [info]: TEST END
