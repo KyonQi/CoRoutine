@@ -1,0 +1,58 @@
+2024-07-16 03:12:03.915602 [debug]: Scheduler Test Begin
+2024-07-16 03:12:03.915678 [debug]: Fiber::Fiber main id = 0
+2024-07-16 03:12:03.915842 [debug]: Fiber::Fiber main id = 1
+2024-07-16 03:12:03.915906 [debug]: Judge if it's main fiber : 1
+2024-07-16 03:12:03.915922 [debug]: Fiber::Fiber main id = 2
+2024-07-16 03:12:03.916050 [debug]: Fiber::Fiber main id = 3
+2024-07-16 03:12:03.916115 [debug]: Judge if it's main fiber : 1
+2024-07-16 03:12:03.916151 [debug]: Fiber::Fiber main id = 4
+2024-07-16 03:12:03.916186 [debug]: Fiber::Fiber main id = 6
+2024-07-16 03:12:03.916193 [info]: Test Fiber1 Begin
+2024-07-16 03:12:03.916196 [info]: test_fiber1:: before test_fiber1 yield
+2024-07-16 03:12:03.916199 [debug]: Fiber::Fiber main id = 7
+2024-07-16 03:12:03.916200 [info]: Test Fiber3 Begin
+2024-07-16 03:12:03.916204 [info]: Test Fiber3 End
+2024-07-16 03:12:03.916213 [info]: Test Fiber2 Begin
+2024-07-16 03:12:03.916160 [debug]: Fiber::Fiber main id = 5
+2024-07-16 03:12:03.916235 [debug]: test_fiber2 Fiber 7 SLEEP 3s
+2024-07-16 03:12:03.916241 [debug]: Judge if it's main fiber : 1
+2024-07-16 03:12:03.916288 [debug]: Fiber::Fiber main id = 9
+2024-07-16 03:12:03.916212 [debug]: Fiber::Fiber main id = 8
+2024-07-16 03:12:03.916300 [info]: test_fiber1:: after test_fiber1 yield
+2024-07-16 03:12:03.916368 [info]: Test Fiber4 Begin
+2024-07-16 03:12:03.916376 [debug]: Test Fiber4 Schedule 3 tasks for 867351
+2024-07-16 03:12:03.916377 [info]: Test Fiber4 End
+2024-07-16 03:12:03.916412 [info]: Test Fiber1 End
+2024-07-16 03:12:03.916433 [debug]: Fiber::~Fiber() id = 6
+2024-07-16 03:12:03.916379 [debug]: Fiber::~Fiber() id = 8
+2024-07-16 03:12:03.916500 [debug]: Fiber::~Fiber deallocate stack id = 8
+2024-07-16 03:12:03.916462 [debug]: Fiber::~Fiber deallocate stack id = 6
+2024-07-16 03:12:03.916517 [debug]: Fiber::Fiber main id = 10
+2024-07-16 03:12:03.916524 [info]: Test Fiber5 Begin, i = 0
+2024-07-16 03:12:03.916526 [info]: Test Fiber5 End, i = 0
+2024-07-16 03:12:03.916528 [debug]: Fiber::~Fiber() id = 10
+2024-07-16 03:12:03.916545 [debug]: Fiber::~Fiber deallocate stack id = 10
+2024-07-16 03:12:03.916565 [debug]: Fiber::Fiber main id = 11
+2024-07-16 03:12:03.916580 [info]: Test Fiber5 Begin, i = 1
+2024-07-16 03:12:03.916587 [info]: Test Fiber5 End, i = 1
+2024-07-16 03:12:03.916589 [debug]: Fiber::~Fiber() id = 11
+2024-07-16 03:12:03.916591 [debug]: Fiber::~Fiber deallocate stack id = 11
+2024-07-16 03:12:03.916610 [debug]: Fiber::Fiber main id = 12
+2024-07-16 03:12:03.916626 [info]: Test Fiber5 Begin, i = 2
+2024-07-16 03:12:03.916630 [info]: Test Fiber5 End, i = 2
+2024-07-16 03:12:03.916632 [debug]: Fiber::~Fiber() id = 12
+2024-07-16 03:12:03.916652 [debug]: Fiber::~Fiber deallocate stack id = 12
+2024-07-16 03:12:06.916552 [info]: Test Fiber2 End
+2024-07-16 03:12:06.916633 [debug]: Fiber::~Fiber() id = 7
+2024-07-16 03:12:06.916635 [debug]: Fiber::~Fiber() id = 9
+2024-07-16 03:12:06.916635 [debug]: Fiber::~Fiber() id = 2
+2024-07-16 03:12:06.916688 [debug]: Fiber::~Fiber deallocate stack id = 7
+2024-07-16 03:12:06.916695 [debug]: Fiber::~Fiber() id = 4
+2024-07-16 03:12:06.916729 [debug]: Fiber::~Fiber deallocate stack id = 2
+2024-07-16 03:12:06.916751 [debug]: Fiber::~Fiber() id = 1
+2024-07-16 03:12:06.916832 [debug]: Fiber::~Fiber deallocate stack id = 9
+2024-07-16 03:12:06.916888 [debug]: Fiber::~Fiber() id = 5
+2024-07-16 03:12:06.916858 [debug]: Fiber::~Fiber deallocate stack id = 4
+2024-07-16 03:12:06.916956 [debug]: Fiber::~Fiber() id = 3
+2024-07-16 03:12:06.917020 [debug]: Scheduler Test End
+2024-07-16 03:12:07.917539 [debug]: Fiber::~Fiber() id = 0

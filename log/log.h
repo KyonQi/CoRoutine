@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include <assert.h>
 #include <stdarg.h>
 #include <pthread.h>
 #include "block_queue.h"
@@ -62,5 +63,7 @@ private:
 #define LOG_INFO(format, ...) if(0 == m_close_log) {Log::get_instance()->write_log(1, format, ##__VA_ARGS__); Log::get_instance()->flush();}
 #define LOG_WARN(format, ...) if(0 == m_close_log) {Log::get_instance()->write_log(2, format, ##__VA_ARGS__); Log::get_instance()->flush();}
 #define LOG_ERROR(format, ...) if(0 == m_close_log) {Log::get_instance()->write_log(3, format, ##__VA_ARGS__); Log::get_instance()->flush();}
+
+#define LOG_ASSERT(x) if (0 == m_close_log && !(x)) {Log::get_instance()->write_log(3, "ASSERT ERROR: NOT %s", #x); Log::get_instance()->flush(); assert(x);}
 
 #endif

@@ -1,9 +1,10 @@
 #include <atomic>
 
 #include "fiber.h"
+#include "scheduler.h"
 #include "./log/log.h"
 
-int m_close_log = 0; //LOG类使用变量后续移除
+static int m_close_log = 0; //LOG类使用变量后续移除
 
 //全局静态变量，用于生成协程ID
 static std::atomic<uint64_t> s_fiber_id{0};
@@ -78,11 +79,11 @@ Fiber::ptr Fiber::GetThis() {
  * @param cb 协程的回调入口函数
  * @param stacksize 分配的调用栈空间大小
  */
-Fiber::Fiber(std::function<void()> cb, size_t stacksize) 
-    : m_id(s_fiber_id++), m_cb(cb) {
+Fiber::Fiber(std::function<void()> cb, size_t stacksize, bool run_in_scheduler) 
+    : m_id(s_fiber_id++), m_cb(cb), m_runInScheduler(run_in_scheduler) {
     s_fiber_count++;
     m_stacksize = stacksize ? stacksize : fiber_stack_size;
-    m_stack = StackAllocator::Alloc(m_stacksize); //分配栈空间
+    m_stack = StackAllocator::Alloc(m_stacksize); //分配协程的栈空间
     //初始化并拿到当前协程上下文
     if (getcontext(&m_ctx)) {
         //LOG_ERROR("%llu Fiber getcontext wrong", s_fiber_id);
@@ -147,30 +148,58 @@ void Fiber::reset(std::function<void()> cb) {
 }
 
 /**
- * @brief 切换到当前协程继续运行，注意只能主-子，主-子这样切换
+ * @brief 切换到当前协程继续运行，注意区分是否由调度器参与，若是则应与调度器主协程(调度协程)切换
+ * 若否，则应与线程主协程切换
  */
 void Fiber::resume() {
     if (m_state == TERM || m_state == RUNNING) LOG_ERROR("Fiber::resume %llu is TERM or RUNNING, can't resume", m_id);
-    LOG_INFO("Fiber %llu is now resume", m_id);
+    LOG_ASSERT(m_state != TERM && m_state != RUNNING);
+    //LOG_INFO("Fiber %llu is now resume", m_id); // for testing
+
     SetThis(this);
     m_state = RUNNING;
     //swap会直接跳转执行，并不会返回，相当于调用函数
-    if (swapcontext(&(t_thread_fiber->m_ctx), &m_ctx)) {
-        LOG_ERROR("Fiber:: resume %llu swap false", m_id);
+    if (m_runInScheduler) {
+        if (swapcontext(&(Scheduler::GetMainFiber()->m_ctx), &m_ctx)) {
+            //如果是Scheduler支配的协程，应当与Scheduler的调度协程做调换
+            //适用于线程池内的协程
+            LOG_ERROR("Fiber::resume %s", "Scheduler Resume Fault");
+        }
+    } else {
+        if (swapcontext(&(t_thread_fiber->m_ctx), &m_ctx)) {
+            //如果非Scheduler支配，应当与线程主协程（主线程）做调换
+            //适用于use_caller线程
+            LOG_ERROR("Fiber::resume %s", "Main Thread Resume Fault");
+        }
     }
+    // if (swapcontext(&(t_thread_fiber->m_ctx), &m_ctx)) {
+    //     LOG_ERROR("Fiber:: resume %llu swap false", m_id);
+    // } // Version 1.0
 }
 
 void Fiber::yield() {
     if (m_state != TERM && m_state != RUNNING) LOG_ERROR("Fiber::yield %llu not TERM or RUNNING, can't yield, curr state is %d", m_id, m_state);
-    LOG_INFO("Fiber %llu is now yield", m_id);
+    LOG_ASSERT(m_state == RUNNING || m_state == TERM);
+    //LOG_INFO("Fiber %llu is now yield", m_id);
+
     SetThis(t_thread_fiber.get()); //当前协程切换回主协程
     if (m_state != TERM) {
         m_state = READY; //如果被切换掉的协程没有结束，则转回READY等待被调度
     }
 
-    if (swapcontext(&m_ctx, &(t_thread_fiber->m_ctx))) {
-        LOG_ERROR("Fiber::yield %llu false", m_id);
+    // 如果协程参与调度器，则应与调度器主协程swap，否则应与线程主协程
+    if (m_runInScheduler) {
+        if (swapcontext(&m_ctx, &(Scheduler::GetMainFiber()->m_ctx))) {
+            LOG_ERROR("Fiber::yield %s", "Scheduler Yield Fault");
+        }
+    } else {
+        if (swapcontext(&m_ctx, &(t_thread_fiber->m_ctx))) {
+            LOG_ERROR("Fiber::yield %s", "Main Thread Yield Fault");
+        }
     }
+    // if (swapcontext(&m_ctx, &(t_thread_fiber->m_ctx))) {
+    //     LOG_ERROR("Fiber::yield %llu false", m_id);
+    // } // Ver. 1
 }
 
 void Fiber::MainFunc() {
@@ -178,6 +207,8 @@ void Fiber::MainFunc() {
     if (!cur) {
         LOG_ERROR("Fiber::MainFunc cur is nullptr");
     }
+    LOG_ASSERT(cur);
+
     cur->m_cb(); //调用当前协程的回调函数
     cur->m_cb = nullptr;
     cur->m_state = TERM; //处理完毕

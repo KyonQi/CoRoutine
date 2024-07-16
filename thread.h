@@ -96,6 +96,8 @@ public:
         t_thread_name = name;
     }
 
+    static pid_t GetThreadId() { return syscall(SYS_gettid); }
+
 private:
     static void* run(void *arg) {
         Thread *thread = (Thread *)arg;

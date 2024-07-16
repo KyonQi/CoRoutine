@@ -30,7 +30,7 @@ public:
      * @param cb 协程入口函数
      * @param stacksize 协程栈大小
      */
-    Fiber(std::function<void()> cb, size_t stacksize = 0);
+    Fiber(std::function<void()> cb, size_t stacksize = 0, bool run_in_scheduler = true);
     
     ~Fiber();
 
@@ -69,6 +69,8 @@ private:
     ucontext_t m_ctx; //该协程的上下文
     void *m_stack = nullptr; //协程的栈地址位置
     std::function<void()> m_cb; //协程的回调函数
+
+    bool m_runInScheduler; //判断本协程是否受调度期支配 scheduler用于判断swap的对象
 };
 
 

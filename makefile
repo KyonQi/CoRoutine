@@ -8,8 +8,8 @@ else
 
 endif
 
-test_fiber: test_fiber.cpp ./log/log.cpp ./fiber.cpp
-	$(CXX) -o test_fiber  $^ $(CXXFLAGS) -lpthread
+test_scheduler: ./test/test_scheduler.cpp ./log/log.cpp ./fiber.cpp ./scheduler.cpp
+	$(CXX) -o test_scheduler  $^ $(CXXFLAGS) -lpthread
 
 clean:
-	rm  -r test_fiber
+	rm  -r test_scheduler
