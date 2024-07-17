@@ -2,7 +2,7 @@
 
 #include "scheduler.h"
 
-static int m_close_log = 1;
+static int m_close_log = 0;
 
 // 当前线程的调度器，统一调度器下所有线程共享同一实例
 static thread_local Scheduler *t_scheduler = nullptr;
@@ -18,6 +18,7 @@ Scheduler::Scheduler(size_t threads, bool use_caller, const std::string &name) {
         --threads; //因为创建调度器的线程也参与调度了
         Fiber::GetThis(); //初始化主协程 很重要！
         LOG_ASSERT(GetThis() == nullptr); //这里这个GetThis是Scheduler的静态函数，返回当前线程的调度器，确保是空指针
+        t_scheduler = this;
 
         //useCaller的调度协程创建，因为不受调度器支配(非t_scheduler_fiber)，放在这里
         //注意最后一个参数run_in_scheduler是false
@@ -46,7 +47,7 @@ void Scheduler::setThis() {
 }
 
 Scheduler::~Scheduler() {
-    LOG_DEBUG("Scheduler::~Scheduler %s is deleting", m_name);
+    LOG_DEBUG("Scheduler::~Scheduler %s is deleting", m_name.c_str());
     LOG_ASSERT(m_stopping); //必须m_stopping为1，才能析构
     if (GetThis() == this) {
         t_scheduler = nullptr;
@@ -54,7 +55,7 @@ Scheduler::~Scheduler() {
 }
 
 void Scheduler::start() {
-    LOG_DEBUG("Scheduler::start %s", m_name);
+    LOG_DEBUG("Scheduler::start %s", m_name.c_str());
     m_mutex.lock(); //必须上锁，因为多线程操作m_threadIds以及判断m_stopping
     if (m_stopping) {
         LOG_ERROR("Scheduler::start %s ERROR", m_name);
@@ -201,6 +202,7 @@ void Scheduler::run() {
             if (idle_fiber->getState() == Fiber::TERM) {
                 //若调度器没有任务，那么idle协程应当会不停resume-yield，不会结束
                 //如果idle协程结束，那么一定是调度器停止了
+                //通过这个地方，使得整个循环能有地方退出，很重要！！！
                 LOG_DEBUG("Scheduler::run %s", "Idle Fiber TERM");
                 break;
             }

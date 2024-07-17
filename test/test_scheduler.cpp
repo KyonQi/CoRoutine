@@ -66,9 +66,9 @@ int main () {
     Log::get_instance()->init("./SchedulerLog", 0, 2000, 800000, 800);
     LOG_DEBUG("%s", "Scheduler Test Begin");
     
-    // Scheduler sc; //主线程初始化调度器
+    Scheduler sc; //主线程初始化调度器
 
-    Scheduler sc(3, false); // 创建额外的线程池使用调度器，不使用use_caller
+    //Scheduler sc(3, false, "Test Scheduler"); // 创建额外的线程池使用调度器，不使用use_caller
     sc.schedule(test_fiber1); //添加函数调度任务
     sc.schedule(test_fiber2);
 
@@ -87,5 +87,4 @@ int main () {
     
     LOG_DEBUG("%s", "Scheduler Test End");
     sleep(1);
-    return 0;
 }
