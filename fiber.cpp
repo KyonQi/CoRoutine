@@ -68,7 +68,7 @@ Fiber::ptr Fiber::GetThis() {
         return t_fiber->shared_from_this();
     }
     Fiber::ptr main_fiber(new Fiber); //类内调用private的构造，初始化主协程
-    LOG_DEBUG("Judge if it's main fiber : %d", t_fiber == main_fiber.get());
+    //LOG_DEBUG("Judge if it's main fiber : %d", t_fiber == main_fiber.get());
     t_thread_fiber = main_fiber; //t_thread_fiber是线程的主协程，智能指针形式
     //注意，这里主协程的创建不分配栈空间
     return t_fiber->shared_from_this();

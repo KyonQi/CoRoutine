@@ -63,6 +63,8 @@ protected:
 
     void setThis(); //设置当前运行的协程调度器
 
+    bool hasIdleThreads() { return m_idleThreadCount > 0; }
+
 private:
     /**
      * @brief 真正的添加调度任务到队列中，锁在调用前添加，自行解锁

@@ -106,7 +106,7 @@ void Scheduler::stop() {
     if (m_useCaller) {
         LOG_ASSERT(GetThis() == this); //通过GetThis获得当前线程的调度器
     } else {
-        LOG_ASSERT(GetThis() != this); // why this?
+        LOG_ASSERT(GetThis() != this); //因为如果没有设置主线程参与的话，主线程GetThis应该是nullptr
     }
 
     for (size_t i = 0; i < m_threadCount; ++i) {

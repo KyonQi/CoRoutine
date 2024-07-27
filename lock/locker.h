@@ -58,6 +58,36 @@ private:
     
 };
 
+/**
+ * @brief 封装读写锁，用于IOManager中
+ */
+class iolocker {
+public:
+    iolocker() {
+        if (pthread_rwlock_init(&m_mutex, nullptr)) {
+            throw std::exception();
+        }
+    }
+    ~iolocker() {
+        pthread_rwlock_destroy(&m_mutex);
+    }
+    // 读锁
+    bool rdlock() {
+        return pthread_rwlock_rdlock(&m_mutex) == 0;
+    }
+    // 写锁
+    bool wrlock() {
+        return pthread_rwlock_wrlock(&m_mutex) == 0;
+    }
+    // 解锁
+    bool unlock() {
+        return pthread_rwlock_unlock(&m_mutex) == 0;
+    }
+
+private:
+    pthread_rwlock_t m_mutex;
+};
+
 //封装条件变量类
 class cond {
 public:
